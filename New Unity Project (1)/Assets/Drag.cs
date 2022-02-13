@@ -12,7 +12,7 @@ public class Drag : MonoBehaviour
         }
         if (Input.GetAxis("Fire1") == 0 && transform.childCount == 1 && collision.gameObject.GetComponent<DragObject>())
         {
-            print("wow");
+            transform.GetChild(0).gameObject.GetComponent<DragObject>().fuse(collision.gameObject);
             transform.DetachChildren();
         }
     }
@@ -24,7 +24,7 @@ public class Drag : MonoBehaviour
         }
         if (Input.GetAxis("Fire1") == 0 && transform.childCount == 1 && collision.gameObject != transform.GetChild(0).gameObject && collision.gameObject.GetComponent<DragObject>())
         {
-            print(collision.name);
+            collision.gameObject.gameObject.GetComponent<DragObject>().fuse(transform.GetChild(0).gameObject);
             transform.DetachChildren();
         }
     }
